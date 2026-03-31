@@ -146,8 +146,8 @@ export default function Home() {
         .t-name { font-size: 13px; font-weight: 500; color: var(--b900); }
         .t-loc { font-size: 11px; color: var(--tb); }
 
-        .cta-section { position: relative; min-height: 520px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
-        .cta-bg { position: absolute; inset: 0; background: url('/cta-mala.jpg') center 40% / cover no-repeat; }
+        .cta-section { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
+        .cta-bg { position: absolute; inset: 0; background: url('/cta-mala.jpg') center center / cover no-repeat; }
         .cta-overlay { position: absolute; inset: 0; background: rgba(4,44,83,0.82); }
         .cta-content { position: relative; z-index: 1; padding: 80px 48px; max-width: 600px; }
         .cta-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--b200); margin-bottom: 16px; }
@@ -229,7 +229,7 @@ export default function Home() {
       `}</style>
 
       <nav className={scrolled ? "scrolled" : ""}>
-        <a href="#" className="nav-logo"><span style={{color: scrolled ? undefined : "#fff", fontFamily:"var(--serif)", fontSize:"22px"}}>Vishudhii </span><span style={{color:"var(--b600)", fontStyle:"italic", fontFamily:"var(--serif)", fontSize:"22px"}}>Healings</span></a>
+        <a href="#" style={{fontFamily:"var(--sans)", fontSize:"20px", fontWeight:"600", letterSpacing:"0.04em", color: scrolled ? "var(--b900)" : "#ffffff", textDecoration:"none", transition:"color 0.4s"}}>Vishudhii Healings</a>
         <ul className="nav-links">
           <li><a href="#therapies">Therapies</a></li>
           <li><a href="#courses">Courses</a></li>
