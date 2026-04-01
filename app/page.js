@@ -39,13 +39,13 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
           --w: #ffffff; --ow: #F7FBFF; --b100: #C8E0F8; --b200: #93C4F0;
           --b400: #378ADD; --b600: #185FA5; --b900: #042C53; --tb: #3A5A78;
           --serif: 'Cormorant Garamond', Georgia, serif;
-          --sans: 'Maven Pro', sans-serif;
+          --sans: 'Outfit', sans-serif;
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--w); color: var(--b900); overflow-x: hidden; }
