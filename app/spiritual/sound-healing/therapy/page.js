@@ -1,4 +1,5 @@
 "use client";
+import Nav from "../../../Nav";
 import { useState } from "react";
 
 const MODES = [
@@ -126,7 +127,7 @@ export default function SoundHealingTherapy() {
       `}</style>
 
       <div className="sht-body">
-        {/* HERO */}
+  <Nav dark={true} />
         <section className="sht-hero">
           <div className="sht-hero-bg" />
           <div className="sht-hero-overlay" />
