@@ -1,14 +1,12 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Nav from "./Nav";
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const heroBgRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
       if (heroBgRef.current) {
         heroBgRef.current.style.transform = `scale(1.08) translateY(${window.scrollY * 0.22}px)`;
       }
@@ -49,26 +47,6 @@ export default function Home() {
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); background: var(--w); color: var(--b900); overflow-x: hidden; }
-
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 68px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, box-shadow 0.4s; }
-        nav.scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(24,95,165,0.12); }
-        .nav-logo { font-family: var(--serif); font-size: 22px; color: var(--b900); text-decoration: none; }
-        .nav-logo.light { color: #fff; }
-        nav.scrolled .nav-logo { color: var(--b900); }
-        .nav-logo span { color: var(--b600); font-style: italic; }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
-        nav.scrolled .nav-links a { color: var(--tb); }
-        .nav-links a:hover { color: var(--b400); }
-        .nav-book { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w); background: var(--b600); border: none; padding: 10px 24px; border-radius: 40px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
-        .nav-book:hover { background: var(--b900); }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-        .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: all 0.3s; }
-        nav.scrolled .hamburger span { background: var(--b900); }
-
-        .mobile-menu { position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: var(--w); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; }
-        .mobile-menu a { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--b900); text-decoration: none; }
-        .mob-book { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--w); background: var(--b600); border: none; padding: 14px 36px; border-radius: 40px; cursor: pointer; }
 
         .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; background: url('/hero-bowls.jpg') center 30% / cover no-repeat; transform: scale(1.08); will-change: transform; }
@@ -175,10 +153,6 @@ export default function Home() {
 
         /* MOBILE */
         @media (max-width: 768px) {
-          nav { padding: 0 20px; }
-          .nav-links, .nav-book { display: none; }
-          .hamburger { display: flex; }
-
           .hero-content { padding: 0 24px; max-width: 100%; }
           .hero h1 { font-size: 40px; }
           .hero-sub { font-size: 18px; }
@@ -228,28 +202,7 @@ export default function Home() {
         }
       `}</style>
 
-      <nav className={scrolled ? "scrolled" : ""}>
-        <a href="#" style={{fontFamily:"var(--sans)", fontSize:"20px", fontWeight:"600", letterSpacing:"0.04em", color: scrolled ? "var(--b900)" : "#ffffff", textDecoration:"none", transition:"color 0.4s"}}>Vishudhii Healings</a>
-        <ul className="nav-links">
-          <li><a href="#therapies">Therapies</a></li>
-          <li><a href="#courses">Courses</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#book" className="nav-book">Book a session</a>
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span /><span /><span />
-        </button>
-      </nav>
-
-      {menuOpen && (
-        <div className="mobile-menu">
-          {[["Therapies","#therapies"],["Courses","#courses"],["Testimonials","#testimonials"],["Contact","#contact"]].map(([label, href]) => (
-            <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-          ))}
-          <button className="mob-book" onClick={() => setMenuOpen(false)}>Book a session</button>
-        </div>
-      )}
+      <Nav dark={true} />
 
       <section className="hero">
         <div className="hero-bg" ref={heroBgRef} />
